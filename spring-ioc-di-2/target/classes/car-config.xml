@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--
+		CarMaker maker = new KiaMaker();
+		OrderManager manager = new OrderManager();
+		manager.setMaker(maker); 
+		
+		자바 코드 -> xml 태그
+	 -->
+	<bean id="makerK" class="com.example.ioc.xml.KiaMaker"/>
+	<bean id="makerH" class="com.example.ioc.xml.HyundaiMaker"/>
+	
+	<bean id="manager" class="com.example.ioc.xml.OrderManager" init-method="init">
+	<!-- setMaker를 사용해서 주입 -->
+		<!-- <property name="maker" ref="makerH"/> -->
+	<!-- 생성자에 넣기-->
+	<!-- constructor-arg 없으면 기본생성자로 만듦 --> 	
+		<constructor-arg ref="makerH"/>
+	</bean>
+	
+	
+	
+</beans>
