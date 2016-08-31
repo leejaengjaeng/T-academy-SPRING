@@ -1,5 +1,7 @@
 package com.example.ioc.xml;
 
+import org.springframework.stereotype.Component;
+
 public class OrderManager {
 	
 	private CarMaker maker;

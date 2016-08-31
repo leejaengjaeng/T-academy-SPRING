@@ -1,10 +1,6 @@
 package com.example.ioc.xml;
 
-import org.springframework.stereotype.Service;
 
-//Service에 id를 지정하지 않으면 클래스이름으로 지정됨 
-//id는 소문자로 시작됨으로 kiaMaker가 id로 설정됨 
-@Service
 public class KiaMaker implements CarMaker {
 	
 	public KiaMaker() 

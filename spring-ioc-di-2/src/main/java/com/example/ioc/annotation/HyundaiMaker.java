@@ -1,5 +1,8 @@
 package com.example.ioc.annotation;
+import org.springframework.stereotype.Service;
 
+//<bean id="hyundai" class="com.example.ioc.xml.HyundaiMaker"/> 이거랑 동일 하다고 생각하면됨
+@Service("hyundai")
 public class HyundaiMaker implements CarMaker {
 	
 	public HyundaiMaker() 
@@ -9,9 +12,8 @@ public class HyundaiMaker implements CarMaker {
 
 	public Car sell(Money money) 
 	{
-		System.out.println("I sold a car.");
 		Car car = new Car("sonata");
-		System.out.println("차 팜 ");
+		System.out.println("현대차 팜 ");
 
 		return car;
 	}
