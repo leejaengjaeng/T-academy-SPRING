@@ -8,10 +8,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public interface EmpDao  {
 	
-	public int insert(EmpVo emp);
+	public int insert(EmpVo emp); 
 	public int update(EmpVo emp);
-	public void delete(int key);
-	
+	public int delete(int key);
+	public EmpVo save(EmpVo emp); //upsert = update + insert
+	public boolean insertMulti(List<EmpVo> emps);
 	public int count();
 	public EmpVo selectByKey(int key);
 	public List<EmpVo> selectByLimit(int skip,int size);

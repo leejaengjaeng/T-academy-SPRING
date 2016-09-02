@@ -3,18 +3,24 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!--
+		root-context.xml : 프로젝트 공통 설정
+		servlet-context.xml : 서블릿별 설정 정보  
+	 -->
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
-	
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+
+	<!--
+		 WAS 기동을 listen해서 
+		 ContextLoaderListener(ApplicationContext를 구성)를 기동  
+	-->	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -22,11 +28,18 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
+		<!-- WAS기동시 작동 시킴 -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
+		<!-- fall-back URL Handler (최후의 수문장..?) -->
+		<!-- 
+			/*로 하면 안됨, 모든 요청을(static 파일 또 한) 개발자가 다 처리해야함 
+			static 파일 처리하는 Servlet 과 
+			JSP 파일 처리하는 Servlet을 WAS에서 자동 지원 
+		-->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
